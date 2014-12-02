@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Settingify::VERSION
   spec.authors       = ["Sergey Gernyak"]
   spec.email         = ["sergeg1990@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Global setting system for Rails}
+  spec.description   = %q{System for managing global settings trough database}
+  spec.homepage      = "https://github.com/alterego-labs/settingify"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -18,6 +18,14 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  spec.add_development_dependency "activesupport",  ">= 4.0.4"
+  spec.add_development_dependency "activerecord",   ">= 4.0.4"
+  spec.add_development_dependency "activemodel",    ">= 4.0.4"
+  spec.add_development_dependency "rails",          ">= 4.0.4"
+
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec",         "~> 3.0.0.beta"
+  spec.add_development_dependency "rspec-its",     "1.0.1"
+  spec.add_development_dependency "pry-nav",       "0.2.3"
 end
