@@ -42,6 +42,32 @@ rake db:migrate
 
 ## Usage
 
+### Defining settings
+
+It may be done by patching created initializer in
+`config/initializers/settingify.rb`. There is simple DSL:
+
+```
+Settingify.setup do
+  setting :some_name, type: SettingType, default: 'some default value'
+end
+```
+
+Supported types are _String_ and _Integer_.
+
+### Reading settings
+
+There are two cases:
+
+1. Setting table is not exists
+2. Setting table is exists
+
+In first case when you requests some setting the default value will be
+returned.
+If table is exists request to DB will be done. Value from record will be
+returned if it found and default value in another case.
+When trying to request undefined setting exception will be throwed.
+
 
 ## Contributing
 
