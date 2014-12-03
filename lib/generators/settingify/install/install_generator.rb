@@ -5,7 +5,7 @@ module Settingify
     class InstallGenerator < ::Rails::Generators::Base
       include Rails::Generators::Migration
       source_root File.expand_path('../templates', __FILE__)
-      desc "add the migrations"
+      desc "Add migration and copy initializer"
 
       def self.next_migration_number(path)
         unless @prev_migration_nr
@@ -18,6 +18,10 @@ module Settingify
 
       def copy_migrations
         migration_template "create_settingify_setting.rb", "db/migrate/create_settingify_setting.rb"
+      end
+
+      def copy_initializer
+        copy_file "settingify.rb", "config/initializers/settingify.rb"
       end
     end
   end

@@ -1,5 +1,11 @@
+require 'active_record'
+require 'active_record/version'
+require 'active_support/core_ext/module'
+
 require "settingify/version"
 
 module Settingify
-  # Your code goes here...
+  extend ActiveSupport::Autoload
+
+  autoload :Setting
 end
