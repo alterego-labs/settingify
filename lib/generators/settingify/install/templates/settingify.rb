@@ -1,4 +1,4 @@
-Settingify.prepare_settings do |builder|
+Settingify.prepare_settings do
   # Your settings will be here
-  # builder.setting :my_setting, type: String, default: 'msg'
+  # setting :my_setting, type: String, default: 'msg'
 end
