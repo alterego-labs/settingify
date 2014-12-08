@@ -10,6 +10,7 @@ module Settingify
   autoload :Setting
   autoload :SettingBuilder
   autoload :SettingsList
+  autoload :Reader
 
   extend SettingBuilder
   extend SettingsList
