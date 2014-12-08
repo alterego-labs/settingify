@@ -12,4 +12,32 @@ describe Settingify::Reader do
       expect(reader.read_value).to eq default
     end
   end
+
+  context 'when table is exists' do
+    let(:db_value) { "#{default} - db" }
+
+    before do
+      expect(reader).to receive(:table_exists?).and_return true
+    end
+
+    context 'and record exists' do
+      before(:each) do
+        Settingify::Setting.create key: key, value: db_value
+      end
+
+      it 'returns value from db' do
+        expect(reader.read_value).to eq db_value
+      end
+    end
+
+    context 'and record not exists' do
+      before(:each) do
+        Settingify::Setting.delete_all
+      end
+
+      it 'returns default value' do
+        expect(reader.read_value).to eq default
+      end
+    end
+  end
 end

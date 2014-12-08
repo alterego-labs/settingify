@@ -28,4 +28,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec",         "~> 3.0.0.beta"
   spec.add_development_dependency "rspec-its",     "1.0.1"
   spec.add_development_dependency "pry-nav",       "0.2.3"
+  spec.add_development_dependency 'sqlite3'
 end

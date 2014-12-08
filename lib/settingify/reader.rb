@@ -10,7 +10,7 @@ module Settingify
 
     def read_value
       return default unless table_exists?
-      type db_setting.value
+      type.try_convert db_setting.value
     end
 
     private
@@ -20,7 +20,7 @@ module Settingify
     end
 
     def db_setting
-      Setting.where(key: key).first_or_initialize(value: default)
+      Settingify::Setting.where(key: key).first_or_initialize(value: default)
     end
   end
 end

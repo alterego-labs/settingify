@@ -15,6 +15,12 @@ module Settingify
   extend SettingBuilder
   extend SettingsList
 
+  refine Integer do
+    def self.try_convert(value)
+      Integer(value)
+    end
+  end
+
   def self.prepare_settings(&block)
     raise 'Block must be passed!' unless block_given?
     instance_eval(&block)

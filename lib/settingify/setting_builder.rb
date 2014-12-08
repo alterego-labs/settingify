@@ -9,7 +9,7 @@ module Settingify
     def define_setting(name, type, default)
       SettingsList.class_eval <<-CODE
         def #{name}
-          #{type}('#{default}')
+          Reader.new('#{name}', #{type}, '#{default}').read_value
         end
       CODE
     end

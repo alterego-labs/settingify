@@ -3,7 +3,7 @@
 This is small global settings system with some features:
 
 1. Works without table returning default values. Migrating db loaded the whole rails environment
-   and using settings in loaded code blocks (like activeadmin resource
+   and using settings in lazy code blocks (like activeadmin resource
    files) may cause problems.
 2. May works with admin systems like simple model. For example,
    integration with active admin:
@@ -59,15 +59,16 @@ Supported types are _String_ and _Integer_.
 
 There are two cases:
 
-1. Setting table is not exists
-2. Setting table is exists
+1. Setting table is not exists - the default value will be returned.
+2. Setting table is exists - value from record will be returned.
+3. Setting table is exists and record not found - the default value will
+   be returned too.
 
-In first case when you requests some setting the default value will be
-returned.
-If table is exists request to DB will be done. Value from record will be
-returned if it found and default value in another case.
-When trying to request undefined setting exception will be throwed.
+According to example above to read setting use the next code:
 
+```
+Settingify.some_name
+```
 
 ## Contributing
 
