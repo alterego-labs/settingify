@@ -9,7 +9,6 @@ module Settingify
 
   autoload :Setting
   autoload :SettingBuilder
-  autoload :Setupper
   autoload :SettingsList
 
   extend SettingBuilder
