@@ -10,9 +10,13 @@ module Settingify
   autoload :Setting
   autoload :SettingBuilder
   autoload :Setupper
+  autoload :SettingsList
+
+  extend SettingBuilder
+  extend SettingsList
 
   def self.prepare_settings(&block)
     raise 'Block must be passed!' unless block_given?
-    SettingBuilder.instance_eval(&block)
+    instance_eval(&block)
   end
 end
