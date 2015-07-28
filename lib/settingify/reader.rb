@@ -1,13 +1,5 @@
 module Settingify
-  class Reader
-    attr_reader :key, :default, :type
-
-    def initialize(key, type, default)
-      @key = key
-      @type = type
-      @default = default
-    end
-
+  class Reader < Struct.new(:key, :type, :default)
     def call
       return default unless table_exists?
       Caster.new(type, db_value).call
