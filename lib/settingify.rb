@@ -14,6 +14,7 @@ module Settingify
   autoload :Reader
   autoload :Caster
   autoload :DbReader
+  autoload :ActiveRecordHelpers
 
   extend SettingBuilder
   extend SettingsList
