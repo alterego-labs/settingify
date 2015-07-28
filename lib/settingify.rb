@@ -13,6 +13,7 @@ module Settingify
   autoload :SettingsList
   autoload :Reader
   autoload :Caster
+  autoload :DbReader
 
   extend SettingBuilder
   extend SettingsList

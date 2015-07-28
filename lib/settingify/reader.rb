@@ -20,7 +20,7 @@ module Settingify
     end
 
     def db_setting
-      Settingify::Setting.where(key: key).first_or_initialize(value: default)
+      DbReader.new(key, default).call
     end
 
     def db_value
