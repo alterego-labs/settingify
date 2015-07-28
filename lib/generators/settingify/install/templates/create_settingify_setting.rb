@@ -1,6 +1,6 @@
 class CreateSettingifySetting < ActiveRecord::Migration
   def change
-    create_table :settingify_settings do |t|
+    create_table Settingify::TABLE_NAME do |t|
       t.string :key
       t.string :value
       t.string :description

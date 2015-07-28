@@ -15,9 +15,12 @@ module Settingify
   autoload :Caster
   autoload :DbReader
   autoload :ActiveRecordHelpers
+  autoload :Constants
 
   extend SettingBuilder
   extend SettingsList
+
+  include Constants
 
   def self.prepare_settings(&block)
     raise 'Block must be passed!' unless block_given?

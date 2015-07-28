@@ -8,7 +8,7 @@ module Settingify
     private
 
     def table_exists?
-      ActiveRecordHelpers.table_exists? 'settingify_settings'
+      ActiveRecordHelpers.table_exists? Settingify::TABLE_NAME
     end
 
     def db_setting
