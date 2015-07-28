@@ -53,7 +53,7 @@ Settingify.prepare_settings do
 end
 ```
 
-Supported types are _String_ and _Integer_. But you may define own
+Supported types are _String_, _Integer_ and _Float_. But you may define own
 convertors. There are 2 conditions for that:
 
 1. Convertor must contains class method `ConvertorClass.try_convert`

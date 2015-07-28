@@ -9,7 +9,7 @@ describe Settingify::Reader do
 
   context 'when table does not exists' do
     it 'returns default value' do
-      expect(reader.read_value).to eq default
+      expect(reader.call).to eq default
     end
   end
 
@@ -26,7 +26,7 @@ describe Settingify::Reader do
       end
 
       it 'returns value from db' do
-        expect(reader.read_value).to eq db_value
+        expect(reader.call).to eq db_value
       end
     end
 
@@ -36,7 +36,7 @@ describe Settingify::Reader do
       end
 
       it 'returns default value' do
-        expect(reader.read_value).to eq default
+        expect(reader.call).to eq default
       end
     end
   end

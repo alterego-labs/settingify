@@ -8,9 +8,9 @@ module Settingify
       @default = default
     end
 
-    def read_value
+    def call
       return default unless table_exists?
-      type.try_convert db_setting.value
+      Caster.new(type, db_value).call
     end
 
     private
@@ -21,6 +21,10 @@ module Settingify
 
     def db_setting
       Settingify::Setting.where(key: key).first_or_initialize(value: default)
+    end
+
+    def db_value
+      db_setting.value
     end
   end
 end

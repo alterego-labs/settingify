@@ -7,25 +7,15 @@ require "settingify/version"
 module Settingify
   extend ActiveSupport::Autoload
 
+  autoload :ContractExt
   autoload :Setting
   autoload :SettingBuilder
   autoload :SettingsList
   autoload :Reader
+  autoload :Caster
 
   extend SettingBuilder
   extend SettingsList
-
-  refine Integer do
-    def self.try_convert(value)
-      Integer(value)
-    end
-  end
-
-  refine Float do
-    def self.try_convert(value)
-      Float(value)
-    end
-  end
 
   def self.prepare_settings(&block)
     raise 'Block must be passed!' unless block_given?

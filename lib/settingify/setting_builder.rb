@@ -7,11 +7,9 @@ module Settingify
     private
 
     def define_setting(name, type, default)
-      SettingsList.class_eval <<-CODE
-        def #{name}
-          Reader.new('#{name}', #{type}, '#{default}').read_value
-        end
-      CODE
+      SettingsList.send :define_method, name do
+        Reader.new(name, type, default).call
+      end
     end
   end
 end
