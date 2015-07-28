@@ -21,6 +21,12 @@ module Settingify
     end
   end
 
+  refine Float do
+    def self.try_convert(value)
+      Float(value)
+    end
+  end
+
   def self.prepare_settings(&block)
     raise 'Block must be passed!' unless block_given?
     instance_eval(&block)

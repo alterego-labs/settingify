@@ -48,12 +48,16 @@ It may be done by patching created initializer in
 `config/initializers/settingify.rb`. There is simple DSL:
 
 ```
-Settingify.setup do
+Settingify.prepare_settings do
   setting :some_name, type: SettingType, default: 'some default value'
 end
 ```
 
-Supported types are _String_ and _Integer_.
+Supported types are _String_ and _Integer_. But you may define own
+convertors. There are 2 conditions for that:
+
+1. Convertor must contains class method `ConvertorClass.try_convert`
+2. This method accepts string value
 
 ### Reading settings
 

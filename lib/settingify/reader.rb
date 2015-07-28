@@ -16,7 +16,7 @@ module Settingify
     private
 
     def table_exists?
-      ActiveRecord::Base.connection.table_exists? 'settingify_setting'
+      ActiveRecord::Base.connection.table_exists? 'settingify_settings'
     end
 
     def db_setting
