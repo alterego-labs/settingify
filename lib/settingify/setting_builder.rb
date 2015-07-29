@@ -1,6 +1,7 @@
 module Settingify
   module SettingBuilder
     def setting(name, type: String, default: '')
+      register_setting name, type, default
       define_setting name, type, default
     end
 
@@ -10,6 +11,10 @@ module Settingify
       SettingsList.send :define_method, name do
         Reader.new(name, type, default).call
       end
+    end
+
+    def register_setting(name, type, default)
+      Settingify::Repo.instance.add OpenStruct.new(name: name, type: type, default: default)
     end
   end
 end

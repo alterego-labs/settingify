@@ -16,6 +16,7 @@ module Settingify
   autoload :DbReader
   autoload :ActiveRecordHelpers
   autoload :Constants
+  autoload :Repo
 
   extend SettingBuilder
   extend SettingsList
@@ -25,5 +26,9 @@ module Settingify
   def self.prepare_settings(&block)
     raise 'Block must be passed!' unless block_given?
     instance_eval(&block)
+  end
+
+  def self.registered_settings
+    Repo.instance.list
   end
 end
