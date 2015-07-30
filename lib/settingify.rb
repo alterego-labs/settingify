@@ -4,6 +4,8 @@ require 'active_support/core_ext/module'
 
 require "settingify/version"
 
+require 'settingify/railtie' if defined?(Rails)
+
 module Settingify
   extend ActiveSupport::Autoload
 
