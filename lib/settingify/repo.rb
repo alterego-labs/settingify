@@ -12,5 +12,16 @@ module Settingify
     def add(item)
       list << item
     end
+
+    def clear!
+      list.each(&method(:undef_method_for))
+      list.clear
+    end
+
+    private
+
+    def undef_method_for(item)
+      Settingify::SettingsList.send :remove_method, item.name
+    end
   end
 end

@@ -1,5 +1,9 @@
 require 'spec_helper'
 
+module SomeBuilder
+  extend Settingify::SettingBuilder
+end
+
 describe Settingify::Repo do
   subject(:repo) { described_class.send :new }
 
@@ -26,6 +30,20 @@ describe Settingify::Repo do
       expect{
         repo.add :item
       }.to change(repo.list, :count).by(1)
+    end
+  end
+
+  describe '#clear' do
+    before do
+      SomeBuilder.setting(:for_clear_setting)
+    end
+
+    it 'removes all settings' do
+      expect(Settingify).to respond_to :for_clear_setting
+      expect(Settingify.registered_settings).to_not be_empty
+      Settingify::Repo.instance.clear!
+      expect(Settingify).to_not respond_to :for_clear_setting
+      expect(Settingify.registered_settings).to be_empty
     end
   end
 end

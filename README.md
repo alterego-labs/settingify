@@ -47,7 +47,7 @@ rake db:migrate
 It may be done by patching created initializer in
 `config/initializers/settingify.rb`. There is simple DSL:
 
-```
+```ruby
 Settingify.prepare_settings do
   setting :some_name, type: SettingType, default: 'some default value'
 end
@@ -58,6 +58,17 @@ convertors. There are 2 conditions for that:
 
 1. Convertor must contains class method `ConvertorClass.try_convert`
 2. This method accepts string value
+
+Also exists ability for set type as passing class or simple a symbol.
+For example:
+
+```ruby
+Settingify.prepare_settings do
+  setting :some_name, type: :string, default: 'some default value'
+end
+```
+
+Default type is __string__.
 
 ### Reading settings
 
@@ -72,6 +83,17 @@ According to example above to read setting use the next code:
 
 ```
 Settingify.some_name
+```
+
+### Syncing settings
+
+When you define settings in initializer this is no effect on DB. But in
+most cases you (as site administator) want to change some settings
+without redeploy the whole application. For this you may add settings to
+the DB manually or run built-in rake task:
+
+```
+bundle exec rake settingify:sync
 ```
 
 ## Contributing

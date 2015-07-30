@@ -9,3 +9,10 @@ RSpec::Core::RakeTask.new do |t|
   t.rspec_opts = %w(--color)
 end
 
+namespace :settingify do
+  desc 'Syncs defined settings with DB'
+  task sync: :environment do
+    Settingify::DbSyncer.new.call
+  end
+end
+
