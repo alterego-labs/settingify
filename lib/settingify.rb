@@ -13,7 +13,6 @@ module Settingify
   autoload :ContractExt
   autoload :Setting
   autoload :SettingBuilder
-  autoload :SettingsList
   autoload :Reader
   autoload :Caster
   autoload :DbReader
@@ -24,7 +23,6 @@ module Settingify
   autoload :DbSyncer
 
   extend SettingBuilder
-  extend SettingsList
 
   include Constants
 

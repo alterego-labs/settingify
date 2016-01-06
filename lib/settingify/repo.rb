@@ -21,7 +21,7 @@ module Settingify
     private
 
     def undef_method_for(item)
-      Settingify::SettingsList.send :remove_method, item.name
+      Settingify.singleton_class.send :remove_method, item.name
     end
   end
 end

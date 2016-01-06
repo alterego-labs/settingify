@@ -7,9 +7,11 @@ module Settingify
 
     private
 
-    def define_setting(name, type, default)
-      SettingsList.send :define_method, name do
-        Reader.new(name, type, default).call
+    def define_setting(setting_name, type, default)
+      Settingify.instance_eval do
+        singleton_class.send :define_method, setting_name do
+          Reader.new(name, type, default).call
+        end
       end
     end
 
