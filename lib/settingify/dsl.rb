@@ -1,5 +1,5 @@
 module Settingify
-  module SettingBuilder
+  module DSL
     def setting(name, type: String, default: '')
       register_setting name, type, default
       define_setting name, type, default

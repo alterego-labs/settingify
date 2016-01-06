@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 module SomeBuilder
-  extend Settingify::SettingBuilder
+  extend Settingify::DSL
 end
 
-describe Settingify::SettingBuilder do
+describe Settingify::DSL do
   describe 'defining settings' do
     it 'successfully' do
       SomeBuilder.setting(:some_setting)

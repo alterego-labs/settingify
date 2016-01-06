@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module SomeBuilder
-  extend Settingify::SettingBuilder
+  extend Settingify::DSL
 end
 
 describe Settingify::Repo do

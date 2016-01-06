@@ -12,7 +12,7 @@ module Settingify
 
   autoload :ContractExt
   autoload :Setting
-  autoload :SettingBuilder
+  autoload :DSL
   autoload :Reader
   autoload :Caster
   autoload :DbReader
@@ -22,7 +22,7 @@ module Settingify
   autoload :RepoItem
   autoload :DbSyncer
 
-  extend SettingBuilder
+  extend DSL
 
   include Constants
 
