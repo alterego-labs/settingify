@@ -14,7 +14,7 @@ module Settingify
     end
 
     def register_setting(name, type, default)
-      Settingify::Repo.instance.add OpenStruct.new(name: name, type: type, default: default)
+      Settingify::Repo.instance.add RepoItem.new(name, type, default)
     end
   end
 end

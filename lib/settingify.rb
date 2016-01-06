@@ -20,6 +20,7 @@ module Settingify
   autoload :ActiveRecordHelpers
   autoload :Constants
   autoload :Repo
+  autoload :RepoItem
   autoload :DbSyncer
 
   extend SettingBuilder
