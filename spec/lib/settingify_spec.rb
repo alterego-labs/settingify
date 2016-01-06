@@ -6,7 +6,7 @@ describe Settingify do
       it 'raises exception' do
         expect{
           Settingify.prepare_settings
-        }.to raise_exception
+        }.to raise_error(Settingify::PrepareSettingsWithoutBlockError)
       end
     end
 

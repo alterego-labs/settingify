@@ -5,6 +5,7 @@ require 'active_support/core_ext/module'
 require "settingify/version"
 
 require 'settingify/railtie' if defined?(Rails)
+require 'settingify/errors'
 
 module Settingify
   extend ActiveSupport::Autoload
@@ -27,7 +28,7 @@ module Settingify
   include Constants
 
   def self.prepare_settings(&block)
-    raise 'Block must be passed!' unless block_given?
+    raise Settingify::PrepareSettingsWithoutBlockError, 'Block must be passed!' unless block_given?
     instance_eval(&block)
   end
 
