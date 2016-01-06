@@ -8,8 +8,8 @@ module Settingify
     private
 
     def define_setting(setting_name, type, default)
-      Settingify.instance_eval do
-        singleton_class.send :define_method, setting_name do
+      Settingify.singleton_class.instance_eval do
+        define_method setting_name do
           Reader.new(name, type, default).call
         end
       end
