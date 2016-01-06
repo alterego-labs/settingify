@@ -96,6 +96,18 @@ the DB manually or run built-in rake task:
 bundle exec rake settingify:sync
 ```
 
+### Identifiing settings
+
+For some reason, e.g. in admin panel, you need to list all available
+settings. Also you want to provide humanized title and description for
+each setting separately. So for this from now `#title` and `#description`
+on `Settingify::Setting` exists. They provide localized values which can
+be defined using following key structure:
+
+```
+settingify.settings.{KEY}.{title/description}
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/alterego-labs/settingify/fork )
