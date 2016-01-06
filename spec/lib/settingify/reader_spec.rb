@@ -8,6 +8,10 @@ describe Settingify::Reader do
   subject(:reader) { described_class.new(key, type, default) }
 
   context 'when table does not exists' do
+    before do
+      expect(reader).to receive(:table_exists?).and_return false
+    end
+
     it 'returns default value' do
       expect(reader.call).to eq default
     end
