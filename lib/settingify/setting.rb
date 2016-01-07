@@ -3,7 +3,7 @@ module Settingify
     self.table_name_prefix = 'settingify_'
 
     def title
-      I18n.t("settingify.settings.#{self.key}.title", self.key.humanize)
+      I18n.t("settingify.settings.#{self.key}.title", self.key.to_s.humanize)
     end
 
     def description

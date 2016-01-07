@@ -5,17 +5,29 @@ module SomeBuilder
 end
 
 describe Settingify::DSL do
-  describe 'defining settings' do
-    it 'successfully' do
-      SomeBuilder.setting(:some_setting)
-      expect(Settingify.some_setting).to eq ''
-    end
+  describe '#setting' do
+    describe 'defining settings' do
+      it 'successfully' do
+        SomeBuilder.setting(:some_setting)
+        expect(Settingify.some_setting).to eq ''
+      end
 
-    context 'when default is Integer' do
-      it 'returns integer value' do
-        SomeBuilder.setting :some_int_value, type: :integer, default: 12
-        expect(Settingify.some_int_value).to eq 12
+      context 'when default is Integer' do
+        it 'returns integer value' do
+          SomeBuilder.setting :some_int_value, type: :integer, default: 12
+          expect(Settingify.some_int_value).to eq 12
+        end
       end
     end
   end
+
+  #describe '#group', focus: true do
+    #it 'some' do
+      #Settingify.prepare_settings do
+        #group :name do
+          #group :another_group
+        #end
+      #end
+    #end
+  #end
 end

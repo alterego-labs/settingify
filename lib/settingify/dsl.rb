@@ -5,6 +5,10 @@ module Settingify
       define_setting name, type, default
     end
 
+    #def group(name, &block)
+      #Settingify.prepare_settings(&block)
+    #end
+
     private
 
     def define_setting(setting_name, type, default)
