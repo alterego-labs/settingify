@@ -108,6 +108,31 @@ be defined using following key structure:
 settingify.settings.{KEY}.{title/description}
 ```
 
+### Grouping settings
+
+From _v0.0.4_ you can grouping settings. This feature does not affected
+on API for reading setting, so you must to define uniq setting names
+even in different groups. Grouping is a quite simple:
+
+```ruby
+Settingify.prepare_settings do
+  group :amazon_ses do
+    setting :amazon_ses_client_id
+  end
+end
+```
+
+By calling `Settingify.groups` you can get all defined groups. For each
+group you can get it's `#title` and defined `#settings` in concrete
+group. Title is localized and key has the following structure:
+
+```
+settingify.groups.{KEY}.title
+```
+
+Grouping was coming mainly for to be able to more clear render settings
+in admin panel but also with keeping in mind about next enhancements.
+
 ## Contributing
 
 1. Fork it ( https://github.com/alterego-labs/settingify/fork )
