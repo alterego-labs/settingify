@@ -21,15 +21,11 @@ module Settingify
   autoload :Repo
   autoload :RepoItem
   autoload :DbSyncer
+  autoload :SettingsPreparable
 
-  extend DSL
+  extend SettingsPreparable
 
   include Constants
-
-  def self.prepare_settings(&block)
-    raise Settingify::PrepareSettingsWithoutBlockError, 'Block must be passed!' unless block_given?
-    instance_eval(&block)
-  end
 
   def self.registered_settings
     Repo.instance.list
