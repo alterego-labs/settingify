@@ -26,4 +26,27 @@ describe Settingify do
       Settingify.registered_settings
     end
   end
+
+  context 'real testing' do
+    before(:each) do
+      Settingify::Repo.instance.clear!
+    end
+
+    describe 'grouped settings' do
+      before(:each) do
+        Settingify.prepare_settings do
+          setting :ungrouped_setting
+
+          group :group1 do
+            setting :grouped_setting, default: :grouped_value
+          end
+        end
+      end
+
+      it 'defines grouped setting as well as ungrouped one' do
+        expect(Settingify).to respond_to(:ungrouped_setting)
+        expect(Settingify).to respond_to(:grouped_setting)
+      end
+    end
+  end
 end

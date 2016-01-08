@@ -23,6 +23,12 @@ module Settingify
   autoload :DbSyncer
   autoload :SettingsPreparable
 
+  module Builders
+    extend ActiveSupport::Autoload
+
+    autoload :Group
+  end
+
   extend SettingsPreparable
 
   include Constants

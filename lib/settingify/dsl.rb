@@ -5,9 +5,9 @@ module Settingify
       define_setting name, type, default
     end
 
-    #def group(name, &block)
-      #Settingify.prepare_settings(&block)
-    #end
+    def group(name, &block)
+      Builders::Group.call(name, &block)
+    end
 
     private
 

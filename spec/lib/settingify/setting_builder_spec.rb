@@ -21,13 +21,13 @@ describe Settingify::DSL do
     end
   end
 
-  #describe '#group', focus: true do
-    #it 'some' do
-      #Settingify.prepare_settings do
-        #group :name do
-          #group :another_group
-        #end
-      #end
-    #end
-  #end
+  describe '#group' do
+    let(:block) { ->{ } }
+
+    it 'calls group builder properly' do
+      expect(Settingify::Builders::Group).to receive(:call).with(:another_group)
+
+      SomeBuilder.group :another_group, &block
+    end
+  end
 end
