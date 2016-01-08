@@ -1,5 +1,7 @@
 module Settingify
-  class Reader < Struct.new(:key, :type, :default)
+  class Reader < Struct.new(:setting_item)
+    delegate :name, :type, :default, to: :setting_item
+
     def call
       return default unless table_exists?
       Caster.new(type, db_value).call
@@ -12,7 +14,7 @@ module Settingify
     end
 
     def db_setting
-      DbReader.new(key, default).call
+      DbReader.new(name, default).call
     end
 
     def db_value

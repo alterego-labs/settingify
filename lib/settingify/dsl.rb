@@ -1,8 +1,9 @@
 module Settingify
   module DSL
     def setting(name, type: String, default: '')
-      register_setting name, type, default
-      define_setting name, type, default
+      setting_item = build_setting_item(name, type, default)
+      register_setting setting_item
+      define_setting setting_item
     end
 
     def group(name, &block)
@@ -11,16 +12,20 @@ module Settingify
 
     private
 
-    def define_setting(setting_name, type, default)
+    def build_setting_item(name, type, default)
+      RepoItem.new(name, type, default)
+    end
+
+    def define_setting(setting_item)
       Settingify.singleton_class.instance_eval do
-        define_method setting_name do
-          Reader.new(name, type, default).call
+        define_method setting_item.name do
+          Reader.new(setting_item).call
         end
       end
     end
 
-    def register_setting(name, type, default)
-      Settingify::Repos::Settings.instance.add RepoItem.new(name, type, default)
+    def register_setting(setting_item)
+      Settingify::Repos::Settings.instance.add setting_item
     end
   end
 end
