@@ -9,12 +9,12 @@ describe Settingify::DbSyncer do
 
   before do
     Settingify::Setting.delete_all
-    Settingify::Repo.instance.clear!
+    Settingify::Repos::Settings.instance.clear!
     SomeBuilder.setting :setting1, default: 'value1'
   end
 
   after do
-    Settingify::Repo.instance.clear!
+    Settingify::Repos::Settings.instance.clear!
   end
 
   context 'when setting does not exists in db' do

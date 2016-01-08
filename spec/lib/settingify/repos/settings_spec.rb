@@ -4,7 +4,7 @@ module SomeBuilder
   extend Settingify::DSL
 end
 
-describe Settingify::Repo do
+describe Settingify::Repos::Settings do
   subject(:repo) { described_class.send :new }
 
   describe '#list' do
@@ -33,7 +33,7 @@ describe Settingify::Repo do
     end
   end
 
-  describe '#clear' do
+  describe '#clear!' do
     before do
       SomeBuilder.setting(:for_clear_setting)
     end
@@ -41,7 +41,7 @@ describe Settingify::Repo do
     it 'removes all settings' do
       expect(Settingify).to respond_to :for_clear_setting
       expect(Settingify.registered_settings).to_not be_empty
-      Settingify::Repo.instance.clear!
+      Settingify::Repos::Settings.instance.clear!
       expect(Settingify).to_not respond_to :for_clear_setting
       expect(Settingify.registered_settings).to be_empty
     end

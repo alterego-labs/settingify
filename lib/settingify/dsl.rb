@@ -20,7 +20,7 @@ module Settingify
     end
 
     def register_setting(name, type, default)
-      Settingify::Repo.instance.add RepoItem.new(name, type, default)
+      Settingify::Repos::Settings.instance.add RepoItem.new(name, type, default)
     end
   end
 end

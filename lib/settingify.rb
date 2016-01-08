@@ -30,12 +30,18 @@ module Settingify
     autoload :Group
   end
 
+  module Repos
+    extend ActiveSupport::Autoload
+
+    autoload :Settings
+  end
+
   extend SettingsPreparable
 
   include Constants
 
   def self.registered_settings
-    Repo.instance.list
+    Repos::Settings.instance.list
   end
 
   def self.groups

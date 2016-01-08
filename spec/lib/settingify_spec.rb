@@ -22,14 +22,14 @@ describe Settingify do
 
   describe '.registered_settings' do
     it 'calls list on repo' do
-      expect(Settingify::Repo).to receive_message_chain(:instance, :list)
+      expect(Settingify::Repos::Settings).to receive_message_chain(:instance, :list)
       Settingify.registered_settings
     end
   end
 
   context 'real testing' do
     before(:each) do
-      Settingify::Repo.instance.clear!
+      Settingify::Repos::Settings.instance.clear!
     end
 
     describe 'grouped settings' do
