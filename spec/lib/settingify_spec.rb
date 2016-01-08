@@ -47,6 +47,12 @@ describe Settingify do
         expect(Settingify).to respond_to(:ungrouped_setting)
         expect(Settingify).to respond_to(:grouped_setting)
       end
+
+      it 'defines new group' do
+        expect(Settingify.groups.count).to eq 1
+        group = Settingify.groups.first
+        expect(group.key).to eq :group1
+      end
     end
   end
 end

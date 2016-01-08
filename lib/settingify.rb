@@ -22,6 +22,7 @@ module Settingify
   autoload :RepoItem
   autoload :DbSyncer
   autoload :SettingsPreparable
+  autoload :Group
 
   module Builders
     extend ActiveSupport::Autoload
@@ -35,5 +36,9 @@ module Settingify
 
   def self.registered_settings
     Repo.instance.list
+  end
+
+  def self.groups
+    @_groups ||= []
   end
 end
