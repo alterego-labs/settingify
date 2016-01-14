@@ -1,0 +1,16 @@
+class CreateSettingifySetting < ActiveRecord::Migration
+  def change
+    create_table Settingify::TABLE_NAME do |t|
+      t.string :key
+      t.string :description
+      <% if Settingify.config.localization.active %>
+        <% Settingify.config.localization.available_locales.each do |locale| %>
+          t.string :"value_#{locale}"
+        <% end %>
+      <% else %>
+        t.string :value
+      <% end %>
+      t.timestamps
+    end
+  end
+end

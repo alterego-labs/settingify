@@ -17,7 +17,7 @@ module Settingify
       end
 
       def copy_migrations
-        migration_template "create_settingify_setting.rb", "db/migrate/create_settingify_setting.rb"
+        migration_template "create_settingify_setting.rb.erb", "db/migrate/create_settingify_setting.rb"
       end
 
       def copy_initializer
