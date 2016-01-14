@@ -18,6 +18,8 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  spec.add_dependency "traco", "3.1.6"
+
   spec.add_development_dependency "activesupport",  ">= 4.0.4"
   spec.add_development_dependency "activerecord",   ">= 4.0.4"
   spec.add_development_dependency "activemodel",    ">= 4.0.4"
