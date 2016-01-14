@@ -7,6 +7,8 @@ require "settingify/version"
 require 'settingify/railtie' if defined?(Rails)
 require 'settingify/errors'
 
+require 'traco'
+
 module Settingify
   extend ActiveSupport::Autoload
 

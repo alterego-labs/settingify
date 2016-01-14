@@ -2,6 +2,10 @@ module Settingify
   class Setting < ActiveRecord::Base
     self.table_name_prefix = 'settingify_'
 
+    if Settingify.config.localization.active
+      translates :value, fallback: Settingify.config.localization.default_locale
+    end
+
     def title
       I18n.t("settingify.settings.#{self.key}.title", self.key.to_s.humanize)
     end
