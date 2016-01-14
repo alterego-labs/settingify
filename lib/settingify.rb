@@ -36,9 +36,21 @@ module Settingify
     autoload :Settings
   end
 
+  module Configs
+    extend ActiveSupport::Autoload
+
+    autoload :Main
+    autoload :Localization
+  end
+
   extend SettingsPreparable
 
   include Constants
+
+  def self.config(&block)
+    @_main_config ||= Configs::Main.new
+    block_given? ? yield(@_main_config) : @_main_config
+  end
 
   def self.registered_settings
     Repos::Settings.instance.list
