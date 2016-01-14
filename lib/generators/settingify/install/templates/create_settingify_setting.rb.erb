@@ -5,7 +5,7 @@ class CreateSettingifySetting < ActiveRecord::Migration
       t.string :description
       <% if Settingify.config.localization.active %>
         <% Settingify.config.localization.available_locales.each do |locale| %>
-          t.string :"value_#{locale}"
+          <%= "t.string :value_#{locale}" %>
         <% end %>
       <% else %>
         t.string :value

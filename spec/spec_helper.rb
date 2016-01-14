@@ -6,6 +6,7 @@ ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
 load 'db/schema.rb'
 
 require 'rspec/its'
+require 'generator_spec'
 require 'settingify'
 require 'pry-nav'
 

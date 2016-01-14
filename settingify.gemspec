@@ -31,5 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec-its",     "1.2.0"
   spec.add_development_dependency "pry-nav",       "0.2.3"
   spec.add_development_dependency 'sqlite3'
+  spec.add_development_dependency 'generator_spec', '0.9.3'
+
   spec.add_development_dependency 'json', '1.8.3'
 end

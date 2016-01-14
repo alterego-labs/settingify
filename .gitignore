@@ -21,3 +21,5 @@ tmp
 *.a
 mkmf.log
 .rvmrc
+tmp
+spec/tmp
