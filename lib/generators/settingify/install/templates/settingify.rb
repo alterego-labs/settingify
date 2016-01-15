@@ -5,7 +5,6 @@ Settingify.config do |config|
   #config.localization do |localization|
     #localization.active            = false
     #localization.available_locales = []
-    #localization.default_locale    = :en
   #end
 end
 

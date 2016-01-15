@@ -3,7 +3,7 @@ module Settingify
     self.table_name_prefix = 'settingify_'
 
     if Settingify.config.localization.active
-      translates :value, fallback: Settingify.config.localization.default_locale
+      translates :value, fallback: false
     end
 
     def title
