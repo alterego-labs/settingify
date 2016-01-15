@@ -133,6 +133,27 @@ settingify.groups.{KEY}.title
 Grouping was coming mainly for to be able to more clear render settings
 in admin panel but also with keeping in mind about next enhancements.
 
+## Testing
+
+Because localization feature affects on Setting class by unchangable
+traco logic includance to run all specs you must run several commands:
+
+```
+rspec spec/lib
+```
+
+and
+
+```
+rspec spec/localized_settingify_spec.rb
+```
+
+Or you can run they by single command:
+
+```
+rake spec
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/alterego-labs/settingify/fork )
