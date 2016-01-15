@@ -16,7 +16,7 @@ rails g active_admin:resource Settingify::Setting
 
 Add this line to your application's Gemfile:
 
-    gem 'settingify', '0.0.4'
+    gem 'settingify', '0.0.5'
 
 And then execute:
 
@@ -24,7 +24,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install settingify -v 0.0.4
+    $ gem install settingify -v 0.0.5
 
 ### Post installation
 
