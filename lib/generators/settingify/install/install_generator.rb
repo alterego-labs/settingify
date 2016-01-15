@@ -7,6 +7,9 @@ module Settingify
       source_root File.expand_path('../templates', __FILE__)
       desc "Add migration and copy initializer"
 
+      class_option :localization, type: :boolean, default: false, desc: 'Enable or disable localization feature.'
+      class_option :locales, type: :string, default: '', desc: 'List of available locales. Separated by comma'
+
       def self.next_migration_number(path)
         unless @prev_migration_nr
           @prev_migration_nr = Time.now.utc.strftime("%Y%m%d%H%M%S").to_i
@@ -14,6 +17,17 @@ module Settingify
           @prev_migration_nr += 1
         end
         @prev_migration_nr.to_s
+      end
+
+      def setup_localization
+        if options[:localization]
+          Settingify.config do |config|
+            config.localization do |localization|
+              localization.active = options[:localization]
+              localization.available_locales = options[:locales].split(',').map(&:to_sym)
+            end
+          end
+        end
       end
 
       def copy_migrations

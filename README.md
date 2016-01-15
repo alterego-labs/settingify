@@ -133,6 +133,10 @@ settingify.groups.{KEY}.title
 Grouping was coming mainly for to be able to more clear render settings
 in admin panel but also with keeping in mind about next enhancements.
 
+## Localization feature
+
+[Read there](https://github.com/alterego-labs/settingify/wiki/Localization-feature)
+
 ## Testing
 
 Because localization feature affects on Setting class by unchangable
