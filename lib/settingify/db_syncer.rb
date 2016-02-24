@@ -33,10 +33,20 @@ module Settingify
     end
 
     def add_record_for(setting)
-      Settingify::Setting.create(
-        key: setting.name,
-        value: setting.default
-      )
+      values = create_value_parameters(setting.default)
+      Settingify::Setting.create values.merge(key: setting.name)
+    end
+
+    private
+
+    def create_value_parameters(default)
+      if Settingify.config.localization.active
+        Settingify.config.localization.available_locales.each_with_object({}) do |locale, hash|
+          hash["value_#{locale}"] = default
+        end
+      else
+        {value: default}
+      end
     end
   end
 end

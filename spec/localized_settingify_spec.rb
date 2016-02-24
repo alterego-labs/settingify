@@ -8,6 +8,7 @@ describe Settingify do
   context 'localized feature' do
     before do
       load 'spec/db/localized_schema.rb'
+      I18n.config.available_locales = [:en, :fr, :nl]
       Settingify.config do |config|
         config.localization do |localization|
           localization.active = true
@@ -15,7 +16,7 @@ describe Settingify do
         end
       end
       Settingify::Repos::Settings.instance.clear!
-      I18n.locale = :fr
+      I18n.locale = 'fr'
       Settingify::Setting.create(key: :localized, value: :fr_localized)
       Settingify.prepare_settings do
         setting :localized, default: :unlocalized
