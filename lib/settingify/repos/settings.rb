@@ -2,21 +2,41 @@ require 'singleton'
 
 module Settingify
   module Repos
+    # Keeps all defined settings
+    #
+    # This repo can has only one instance, so it is singleton one.
     class Settings
       include Singleton
 
+      # Initializes new repo instance
+      #
+      # Actually this method can be called from outside.
+      def initialize
+        @settings = []
+      end
+
+      # Provides a list of all defined settings
+      #
+      # @return [Array<Settingify::Data::Setting>]
       def list
-        @settings_list ||= []
-        @settings_list
+        @settings
       end
 
+      # Adds new setting into a repo
+      #
+      # @param item [Settingify::Data::Setting] - A new setting
+      # @return [Settingify::Repo::Settings]
       def add(item)
-        list << item
+        @settings << item
+        self
       end
 
+      # Cleans up all defined settings
+      #
+      # @return
       def clear!
-        list.each(&method(:undef_method_for))
-        list.clear
+        @settings.each(&method(:undef_method_for))
+        @settings.clear
       end
 
       private

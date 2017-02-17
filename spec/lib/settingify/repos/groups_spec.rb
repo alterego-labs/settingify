@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Settingify::Repos::Groups, :focus do
+describe Settingify::Repos::Groups do
   subject(:repo) { described_class.send :new }
 
   describe '#all' do
