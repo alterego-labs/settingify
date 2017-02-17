@@ -27,6 +27,7 @@ module Settingify
     extend ActiveSupport::Autoload
 
     autoload :Group
+    autoload :Setting
   end
 
   module Configs
