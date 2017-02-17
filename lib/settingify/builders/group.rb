@@ -24,12 +24,12 @@ module Settingify
       end
 
       def fetch_group
-        Settingify.groups.find { |g| g.key == self.name } || define_new_group
+        Settingify::Repos::Groups.instance.find_by_name(self.name) || define_new_group
       end
 
       def define_new_group
         group = Settingify::Data::Group.new(name)
-        Settingify.groups << group
+        Settingify::Repos::Groups.instance.add group
         group
       end
     end
