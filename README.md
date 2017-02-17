@@ -1,5 +1,8 @@
 # Settingify
 
+[![Code Climate](https://codeclimate.com/github/alterego-labs/settingify/badges/gpa.svg)](https://codeclimate.com/github/alterego-labs/settingify)
+[![Test Coverage](https://codeclimate.com/github/alterego-labs/settingify/badges/coverage.svg)](https://codeclimate.com/github/alterego-labs/settingify/coverage)
+
 This is small global settings system with some features:
 
 1. Works without table returning default values. Migrating db loaded the whole rails environment

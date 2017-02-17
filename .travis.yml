@@ -1,0 +1,14 @@
+language: ruby
+
+before_install: gem install bundler
+
+cache: bundler
+
+rvm:
+  - 2.2
+
+script: 'bundle exec rake spec'
+
+addons:
+  code_climate:
+    repo_token: 749040250aeb71040584afe129c44bfca3c197e770bf3808300e56ebf18f839b
