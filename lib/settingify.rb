@@ -20,7 +20,6 @@ module Settingify
   autoload :DbReader
   autoload :ActiveRecordHelpers
   autoload :Constants
-  autoload :Repo
   autoload :DbSyncer
   autoload :SettingsPreparable
 
@@ -41,6 +40,7 @@ module Settingify
     extend ActiveSupport::Autoload
 
     autoload :Settings
+    autoload :Groups
   end
 
   module Configs

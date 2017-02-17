@@ -41,11 +41,15 @@ module Settingify
 
     def create_value_parameters(default)
       if Settingify.config.localization.active
-        Settingify.config.localization.available_locales.each_with_object({}) do |locale, hash|
-          hash["value_#{locale}"] = default
-        end
+        build_localized_value_parameters(default)
       else
         {value: default}
+      end
+    end
+
+    def build_localized_value_parameters(default)
+      Settingify.config.localization.available_locales.each_with_object({}) do |locale, hash|
+        hash["value_#{locale}"] = default
       end
     end
   end
