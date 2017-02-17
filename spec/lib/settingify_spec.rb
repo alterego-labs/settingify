@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Settingify do
+describe Settingify, :focus do
   describe '.prepare_settings' do
     context 'when no block passed' do
       it 'raises exception' do
@@ -22,8 +22,15 @@ describe Settingify do
 
   describe '.registered_settings' do
     it 'calls list on repo' do
-      expect(Settingify::Repos::Settings).to receive_message_chain(:instance, :list)
-      Settingify.registered_settings
+      expect_any_instance_of(Settingify::Repos::Settings).to receive(:list).and_call_original
+      expect(Settingify.registered_settings).to be_a(Array)
+    end
+  end
+
+  describe '.groups' do
+    it 'calls all on repo' do
+      expect_any_instance_of(Settingify::Repos::Groups).to receive(:all).and_call_original
+      expect(Settingify.groups).to be_a(Array)
     end
   end
 
