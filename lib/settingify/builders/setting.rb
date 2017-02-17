@@ -9,11 +9,12 @@ module Settingify
         new(*opts).call(&block)
       end
 
-      # Provides a main logic for registering setting in the system
+      # Calls a main logic for registering setting in the system
       def call
         setting_item = build_setting_item(name, type, default)
         register_setting setting_item
         define_setting setting_item
+        setting_item
       end
 
       private
