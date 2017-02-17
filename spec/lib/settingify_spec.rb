@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Settingify, :focus do
+describe Settingify do
   describe '.prepare_settings' do
     context 'when no block passed' do
       it 'raises exception' do

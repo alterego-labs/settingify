@@ -14,14 +14,12 @@ module Settingify
 
   autoload :ContractExt
   autoload :Setting
-  autoload :DSL
   autoload :Reader
   autoload :Caster
   autoload :DbReader
   autoload :ActiveRecordHelpers
   autoload :Constants
   autoload :DbSyncer
-  autoload :SettingsPreparable
 
   module Builders
     extend ActiveSupport::Autoload
