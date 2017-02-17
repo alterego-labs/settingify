@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Settingify::Group do
+describe Settingify::Data::Group do
   subject(:group) { described_class.new(:test_group) }
 
   describe '#title' do

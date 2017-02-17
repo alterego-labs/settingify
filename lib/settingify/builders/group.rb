@@ -28,7 +28,7 @@ module Settingify
       end
 
       def define_new_group
-        group = Settingify::Group.new(name)
+        group = Settingify::Data::Group.new(name)
         Settingify.groups << group
         group
       end
