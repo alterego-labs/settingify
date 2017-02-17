@@ -29,11 +29,24 @@ module Settingify
     autoload :Group
   end
 
+  module Configs
+    extend ActiveSupport::Autoload
+
+    autoload :Main
+    autoload :Localization
+  end
+
   module Data
     extend ActiveSupport::Autoload
     
     autoload :Group
     autoload :Setting
+  end
+
+  module DSL
+    extend ActiveSupport::Autoload
+
+    autoload :TopLevel
   end
 
   module Repos
@@ -43,22 +56,20 @@ module Settingify
     autoload :Groups
   end
 
-  module Configs
-    extend ActiveSupport::Autoload
-
-    autoload :Main
-    autoload :Localization
-  end
-
-  extend SettingsPreparable
-
   include Constants
 
-  def self.config(&block)
+  # Provides an ability to configure Settingify
+  #
+  # @yield [Settingify::Configs::Main] A main config object
+  # @return [Settingify::Configs::Main] A main config object
+  def self.config(&_block)
     @_main_config ||= Configs::Main.new
     block_given? ? yield(@_main_config) : @_main_config
   end
 
+  # Provides a list of all defined settings
+  #
+  # @return [Array<Settingify::Data::Setting>]
   def self.registered_settings
     Repos::Settings.instance.list
   end
@@ -68,5 +79,14 @@ module Settingify
   # @return [Array<Settingify::Data::Group>]
   def self.groups
     Repos::Groups.instance.all
+  end
+
+  # The main API point to define new settings and groups of them
+  #
+  # @yield [Settingify::DSL::TopLevel] - An object which provides a top level DSL for defining
+  #   settings
+  def self.prepare_settings(&block)
+    raise Settingify::PrepareSettingsWithoutBlockError, 'Block must be passed!' unless block_given?
+    DSL::TopLevel.new.instance_eval(&block)
   end
 end
