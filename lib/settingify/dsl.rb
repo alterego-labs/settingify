@@ -13,7 +13,7 @@ module Settingify
     private
 
     def build_setting_item(name, type, default)
-      RepoItem.new(name, type, default)
+      Settingify::Data::Setting.new(name, type, default)
     end
 
     def define_setting(setting_item)
