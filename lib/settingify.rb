@@ -24,11 +24,16 @@ module Settingify
   autoload :RepoItem
   autoload :DbSyncer
   autoload :SettingsPreparable
-  autoload :Group
 
   module Builders
     extend ActiveSupport::Autoload
 
+    autoload :Group
+  end
+
+  module Data
+    extend ActiveSupport::Autoload
+    
     autoload :Group
   end
 
