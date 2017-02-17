@@ -1,16 +1,14 @@
 require 'spec_helper'
 
-module SomeBuilder
-  extend Settingify::DSL
-end
-
 describe Settingify::DbSyncer do
   subject(:syncer) { described_class.new }
 
   before do
     Settingify::Setting.delete_all
     Settingify::Repos::Settings.instance.clear!
-    SomeBuilder.setting :setting1, default: 'value1'
+    Settingify.prepare_settings do
+      setting :setting1, default: 'value1'
+    end
   end
 
   after do
