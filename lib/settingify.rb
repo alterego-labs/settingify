@@ -21,7 +21,6 @@ module Settingify
   autoload :ActiveRecordHelpers
   autoload :Constants
   autoload :Repo
-  autoload :RepoItem
   autoload :DbSyncer
   autoload :SettingsPreparable
 
@@ -35,6 +34,7 @@ module Settingify
     extend ActiveSupport::Autoload
     
     autoload :Group
+    autoload :Setting
   end
 
   module Repos

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Settingify::Reader do
   subject(:reader) { described_class.new(setting_item) }
 
-  let(:setting_item) { Settingify::RepoItem.new(key, type, default) }
+  let(:setting_item) { Settingify::Data::Setting.new(key, type, default) }
 
   let(:key) { 'reader_setting' }
   let(:type) { String }
