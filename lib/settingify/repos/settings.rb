@@ -17,8 +17,16 @@ module Settingify
 
       # Provides a list of all defined settings
       #
+      # @deprecated Use {#all} instead
       # @return [Array<Settingify::Data::Setting>]
       def list
+        @settings
+      end
+
+      # Provides a list of all defined settings
+      #
+      # @return [Array<Settingify::Data::Setting>]
+      def all
         @settings
       end
 
