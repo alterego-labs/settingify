@@ -63,7 +63,10 @@ module Settingify
     Repos::Settings.instance.list
   end
 
+  # Provides a list of all defined groups
+  #
+  # @return [Array<Settingify::Data::Group>]
   def self.groups
-    @_groups ||= []
+    Repos::Groups.instance.all
   end
 end
