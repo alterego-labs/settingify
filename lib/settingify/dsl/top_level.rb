@@ -8,9 +8,7 @@ module Settingify
       # @param type [Symbol, Object] A name of a setting's type or a reference to a type's class
       # @param default [String] A default value for a setting
       def setting(name, type: String, default: '')
-        setting_item = build_setting_item(name, type, default)
-        register_setting setting_item
-        define_setting setting_item
+        Builders::Setting.call(name, type, default)
       end
 
       # Provides DSL for defining settings group
@@ -19,24 +17,6 @@ module Settingify
       # @yield [Settingify::DSL::Group] A DSL context for describing group of settings
       def group(name, &block)
         Builders::Group.call(name, &block)
-      end
-
-      private
-
-      def build_setting_item(name, type, default)
-        Settingify::Data::Setting.new(name, type, default)
-      end
-
-      def define_setting(setting_item)
-        Settingify.singleton_class.instance_eval do
-          define_method setting_item.name do
-            Reader.new(setting_item).call
-          end
-        end
-      end
-
-      def register_setting(setting_item)
-        Settingify::Repos::Settings.instance.add setting_item
       end
     end
   end
