@@ -27,6 +27,7 @@ module Settingify
     extend ActiveSupport::Autoload
 
     autoload :Group
+    autoload :GroupedSetting
     autoload :Setting
   end
 
@@ -48,6 +49,7 @@ module Settingify
     extend ActiveSupport::Autoload
 
     autoload :TopLevel
+    autoload :Group
   end
 
   module Repos

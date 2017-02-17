@@ -16,7 +16,7 @@ module Settingify
       # @param name [Symbol] A name of a group
       # @yield [Settingify::DSL::Group] A DSL context for describing group of settings
       def group(name, &block)
-        Builders::Group.call(name, &block)
+        DSL::Group.new(name).instance_eval(&block)
       end
     end
   end
