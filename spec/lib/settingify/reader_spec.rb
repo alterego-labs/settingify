@@ -29,7 +29,7 @@ describe Settingify::Reader do
 
     context 'and record exists' do
       before(:each) do
-        Settingify::Setting.create key: key, value: db_value
+        Settingify::Persistence::Repo.instance.create key: key, value: db_value
       end
 
       it 'returns value from db' do
@@ -39,7 +39,7 @@ describe Settingify::Reader do
 
     context 'and record not exists' do
       before(:each) do
-        Settingify::Setting.delete_all
+        Settingify::Persistence::Repo.instance.delete_all
       end
 
       it 'returns default value' do

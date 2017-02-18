@@ -17,7 +17,7 @@ describe Settingify do
       end
       Settingify::Repos::Settings.instance.clear!
       I18n.locale = 'fr'
-      Settingify::Setting.create(key: :localized, value: :fr_localized)
+      Settingify::Persistence::Repo.instance.create(key: :localized, value: :fr_localized)
       Settingify.prepare_settings do
         setting :localized, default: :unlocalized
       end

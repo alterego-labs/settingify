@@ -4,7 +4,7 @@ describe Settingify::DbSyncer do
   subject(:syncer) { described_class.new }
 
   before do
-    Settingify::Setting.delete_all
+    Settingify::Persistence::Repo.instance.delete_all
     Settingify::Repos::Settings.instance.clear!
     Settingify.prepare_settings do
       setting :setting1, default: 'value1'
@@ -19,23 +19,23 @@ describe Settingify::DbSyncer do
     it 'creates new record' do
       expect{
         syncer.call
-      }.to change(Settingify::Setting, :count).by(1)
+      }.to change(Settingify::Persistence::Repo.instance, :count).by(1)
     end
   end
 
   context 'when setting already exists in db' do
     before do
-      Settingify::Setting.create(key: :setting1)
+      Settingify::Persistence::Repo.instance.create(key: :setting1)
     end
 
     after do
-      Settingify::Setting.delete_all
+      Settingify::Persistence::Repo.instance.delete_all
     end
 
     it 'does not creates new record' do
       expect{
         syncer.call
-      }.to_not change(Settingify::Setting, :count)
+      }.to_not change(Settingify::Persistence::Repo.instance, :count)
     end
   end
 end

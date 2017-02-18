@@ -50,6 +50,12 @@ module Settingify
     autoload :Group
   end
 
+  module Persistence
+    extend ActiveSupport::Autoload
+
+    autoload :Repo
+  end
+
   module Repos
     extend ActiveSupport::Autoload
 

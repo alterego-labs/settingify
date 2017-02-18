@@ -1,9 +1,7 @@
 module Settingify
   class DbReader < Struct.new(:key, :default)
     def call
-      ::Settingify::Setting
-        .where(key: key)
-        .first_or_initialize(value: default)
+      Persistence::Repo.instance.first_or_default(key, default)
     end
   end
 end
