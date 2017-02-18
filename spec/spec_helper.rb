@@ -10,7 +10,7 @@ require 'generator_spec'
 require 'settingify'
 require 'pry-nav'
 
-if ENV['TRAVIS'] == true
+if ENV['TRAVIS']
   require "codeclimate-test-reporter"
   CodeClimate::TestReporter.start
 end
