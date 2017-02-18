@@ -2,7 +2,7 @@
 
 [![Code Climate](https://codeclimate.com/github/alterego-labs/settingify/badges/gpa.svg)](https://codeclimate.com/github/alterego-labs/settingify)
 [![Test Coverage](https://codeclimate.com/github/alterego-labs/settingify/badges/coverage.svg)](https://codeclimate.com/github/alterego-labs/settingify/coverage)
-[![Build Status](https://travis-ci.org/alterego-labs/settingify.svg?branch=feature/global-refactoring)](https://travis-ci.org/alterego-labs/settingify)
+[![Build Status](https://travis-ci.org/alterego-labs/settingify.svg?branch=master)](https://travis-ci.org/alterego-labs/settingify)
 
 This is small global settings system with some features:
 
