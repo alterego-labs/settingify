@@ -4,21 +4,23 @@ module Settingify
 
     def call
       return default unless table_exists?
-      Caster.new(type, db_value).call
+      db_value = fetch_db_value
+      cast db_value
     end
 
     private
 
     def table_exists?
-      ActiveRecordHelpers.table_exists? Settingify::TABLE_NAME
+      Persistence::Repo.instance.data_source_exists?
     end
 
-    def db_setting
-      DbReader.new(name, default).call
-    end
-
-    def db_value
+    def fetch_db_value
+      db_setting = DbReader.new(name, default).call
       db_setting.value
+    end
+
+    def cast(raw_value)
+      Caster.new(type, raw_value).call
     end
   end
 end
