@@ -29,12 +29,13 @@ module Settingify
     end
 
     def exists_in_db?(setting)
-      Settingify::Setting.where(key: setting.name).any?
+      Persistence::Repo.instance.exists_for_key?(setting.name)
     end
 
     def add_record_for(setting)
       values = create_value_parameters(setting.default)
-      Settingify::Setting.create values.merge(key: setting.name)
+      values = values.merge(key: setting.name)
+      Persistence::Repo.instance.create(values)
     end
 
     private

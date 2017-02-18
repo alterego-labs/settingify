@@ -20,7 +20,7 @@ module Settingify
       end
 
       def settings
-        ::Settingify::Setting.where(key: setting_keys)
+        Persistence::Repo.instance.get_by_keys(setting_keys)
       end
     end
   end
