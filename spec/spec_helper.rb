@@ -10,6 +10,11 @@ require 'generator_spec'
 require 'settingify'
 require 'pry-nav'
 
+if ENV['TRAVIS'] == true
+  require "codeclimate-test-reporter"
+  CodeClimate::TestReporter.start
+end
+
 Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
