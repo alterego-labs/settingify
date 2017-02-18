@@ -53,6 +53,13 @@ module Settingify
       def count
         Settingify::Setting.count
       end
+
+      # Checks, whether exists data source for settings or not
+      #
+      # @return [Boolean] A checking result
+      def data_source_exists?
+        ActiveRecordHelpers.table_exists? Settingify::TABLE_NAME
+      end
     end
   end
 end
