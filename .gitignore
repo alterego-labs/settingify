@@ -23,3 +23,5 @@ mkmf.log
 .rvmrc
 tmp
 spec/tmp
+**/*.swp
+.DS_Store
