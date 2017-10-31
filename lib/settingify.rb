@@ -103,4 +103,10 @@ module Settingify
     raise Settingify::PrepareSettingsWithoutBlockError, 'Block must be passed!' unless block_given?
     DSL::TopLevel.new.instance_eval(&block)
   end
+
+  # Clear a related cache entries
+  def self.clear_cache
+    return unless config.cache_enabled?
+    config.cache_store.clear
+  end
 end

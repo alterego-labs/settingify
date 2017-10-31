@@ -19,6 +19,10 @@ module Settingify
         @cache_store = Settingify::Caching::Store.new(provider: provider)
         Settingify::Persistence::Repo.send :prepend, Settingify::Caching::PersistenceRepoExtension
       end
+
+      def cache_enabled?
+        !cache_store.nil?
+      end
     end
   end
 end
