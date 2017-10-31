@@ -67,6 +67,7 @@ module Settingify
     extend ActiveSupport::Autoload
 
     autoload :Store
+    autoload :PersistenceRepoExtension
   end
 
   include Constants
