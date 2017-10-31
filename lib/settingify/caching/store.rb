@@ -20,7 +20,7 @@ module Settingify
       #
       # @return [String]
       def build_cache_key(setting_key)
-        "#{CACHE_KEY_PREFIX}setting_key"
+        "#{CACHE_KEY_PREFIX}#{setting_key}"
       end
 
       # Fetches the value with is related to the passed key
