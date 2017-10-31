@@ -20,6 +20,9 @@ module Settingify
         Settingify::Persistence::Repo.send :prepend, Settingify::Caching::PersistenceRepoExtension
       end
 
+      # Specifies either cache is enabled or not
+      #
+      # @return [Boolean]
       def cache_enabled?
         !cache_store.nil?
       end

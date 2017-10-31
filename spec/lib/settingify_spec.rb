@@ -62,4 +62,33 @@ describe Settingify do
       end
     end
   end
+
+  context 'caching API' do
+    describe '#clear_cache' do
+      let(:cache_store) { double(:cache_store) }
+
+      before do
+        allow(Settingify.config).to receive(:cache_store) { cache_store }
+        expect(Settingify.config).to receive(:cache_enabled?) { is_cache_enabled }
+      end
+
+      context 'WHEN cache is enabled' do
+        let(:is_cache_enabled) { true }
+
+        it 'calls cache clearnup' do
+          expect(cache_store).to receive(:clear)
+          Settingify.clear_cache
+        end
+      end
+
+      context 'WHEN cache is disabled' do
+        let(:is_cache_enabled) { false }
+
+        it 'does not call cache clearnup' do
+          expect(cache_store).to receive(:clear).exactly(0).times
+          Settingify.clear_cache
+        end
+      end
+    end
+  end
 end
