@@ -2,6 +2,8 @@ Settingify.config do |config|
   # Uncomment if you want to use localization feature.
   # For more information visit `lib/settingify/configs/localization.rb`
   #
+  #config.cache_store = Settingify::Caching::Store.new(provider: Rails.cache)
+  #
   #config.localization do |localization|
     #localization.active            = false
     #localization.available_locales = []

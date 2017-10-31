@@ -63,6 +63,12 @@ module Settingify
     autoload :Groups
   end
 
+  module Caching
+    extend ActiveSupport::Autoload
+
+    autoload :Store
+  end
+
   include Constants
 
   # Provides an ability to configure Settingify
