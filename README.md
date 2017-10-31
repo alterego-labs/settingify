@@ -141,6 +141,28 @@ in admin panel but also with keeping in mind about next enhancements.
 
 [Read there](https://github.com/alterego-labs/settingify/wiki/Localization-feature)
 
+## Caching feature (since v0.2.0)
+
+### Configuration
+
+```ruby
+Settingify.config do |config|
+  config.setup_cache provider: Rails.cache
+end
+```
+
+You can use some custom providers. The provider should to have the following interface:
+
+- `#fetch(key, &block)`
+- `#delete_matched(pattern)`
+
+
+### Usage in the wild
+
+After you've set up caching in the initializer you do not need something another to get caching worked.
+The only thing you may need - in the host application after some setting has been changed you need
+to call cache clearnup. For that there is an built-in API: `Settingify.clear_cache`.
+
 ## Testing
 
 Because localization feature affects on Setting class by unchangable
